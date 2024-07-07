@@ -1,0 +1,73 @@
+Selecting Specific Rows
+16 min
+Sometimes, we’re only interested in looking at certain rows and columns of a DataFrame. We can select sections of a DataFrame using two methods: .loc[] and .iloc[].
+
+We’ll explore how both of these work using the following mini-DataFrame df.
+
+Make	Year
+0	Ford	2017
+1	Ford	2022
+2	Toyota	2019
+3	Toyota	2020
+Before demonstrating .loc[] and .iloc[], we’ll sort df by Year. This isn’t necessary to use .loc[] or .iloc[], but it will make the difference between them clearer.
+
+	Make	Year
+1	Ford	2022
+3	Toyota	2020
+2	Toyota	2019
+0	Ford	2017
+Note that the index is now out-of-order. This will be important later on.
+
+Using .loc[]
+The .loc[] index works using the index labels, and the syntax is
+
+df.loc[list_of_row_labels, list_of_column_labels]
+
+For example, the code
+
+df.loc[[0,3],['Make']]
+
+would perform the following selection:
+
+Full DataFrame	Selection
+
+	Make	Year
+1	Ford	2022
+3	Toyota	2020
+2	Toyota	2019
+0	Ford	2017
+
+	Make
+0	Ford
+3	Toyota
+
+The first list ([0,3]) instructs .loc[] to select the rows labelled 0 and 3 in order. The second list (['Make']) instructs .loc[] to select only the column labelled Make.
+
+Using .iloc[]
+The .iloc[] index works using the position of the rows and columns, instead of their labels. The syntax is essentially the same, except that the lists contain positions instead of labels:
+
+df.iloc[list_of_row_positions, list_of_column_positions]
+
+where
+
+both the row positions and column positions start at 0
+Rows are counted top to bottom
+columns are counted from left to right
+For example, the code
+
+df.iloc[[0,3],[0]]
+
+performs the selection
+
+Full DataFrame	Selection
+	Make	Year
+1	Ford	2022
+3	Toyota	2020
+2	Toyota	2019
+0	Ford	2017
+	Make
+1	Ford
+0	Ford
+Here, the list [0,3] instructs .iloc to select only the first row (position 0) and the fourth row (position 3). The column list [0] instructs .iloc to select the first column, which is the column labelled Make.
+
+It is very common to make what are called off-by-one errors by starting positions at 1 instead of 0. For example, it’s natural to write the list [1,4] to select the first and fourth rows, instead of the list [0,3]. Be patient, and remember to check for this if you’re receiving the wrong selection from .iloc[].

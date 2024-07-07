@@ -1,0 +1,75 @@
+SORTING AND FILTERING ROWS
+Boolean Masks
+12 min
+Data questions often require us to select data by properties, instead of by position/index. For example, we might want to select all rows in vehicles corresponding to the year 2023.
+
+If we were filtering the dataset by hand, we might go through the dataset looking at each row and comparing the Year value to 2023. If they match, we keep the row. If they don’t, we discard it.
+
+We can automate this process in Pandas, using Python’s comparison operators to compare values.
+
+Comparison Operators
+An operator is a way of combining two variables to produce some output. In mathematics, for example, addition is an operator for combining two numbers: 3+4 combines 3 and 4 to output 7.
+
+Comparison operators are operators that compare two variables and output True or False. In mathematics, = is a comparison operator: 3=4 is False, while 3=3 is True.
+
+Python has all the same comparison operators we know from mathematics:
+
+== is Python’s version of equality
+!= is Python’s version of not equal to
+< is Python’s version of less than
+> is Python’s version of greater than
+<= is Python’s version of less than or equal
+>= is Python’s version of greater than or equal
+Whenever we compare two variables using a comparison operator, Python returns a True if the comparison is correct, and a False if it is incorrect.
+
+For example, here are a few comparisons and their output:
+
+3 == 4
+# output: False
+
+3 < 4
+# output: True
+
+We can also use == to compare non-numeric variable types:
+
+'car' == 'truck'
+# output: False
+
+Comparison Operators in Pandas
+Pandas can perform comparisons for an entire column at once using the same comparisons. For example, to determine which rows of a Year column contain 2023, we would use the code
+
+df['Year'] == 2023
+
+The output of this code is a Series with True for all the rows where the comparison is True:
+
+DataFrame df
+
+df['Year']==2023
+
+year	manufacturer
+2023	Chevrolet
+2020	Chevrolet
+2023	Honda
+2022	Honda
+year
+True
+False
+True
+False
+The output True/False Series is called a Boolean mask. One way to think about this terminology is that a Boolean mask allows you to see only certain features of a column (e.g. whether the value is 2023) while obscuring others.
+
+Since a Boolean mask is technically just a Series with Boolean values, any DataFrame/Series methods we’ve used before will work on a Boolean mask (e.g. .head()).
+
+It can be helpful to assign a Boolean mask to a variable. For example, let’s assign the Boolean mask above to the variable is_2023:
+
+is_2023 = df['year'] == 2023
+
+Note that the single = is what performs the variable assignment, and the value being assigned is the entire comparison df['year'] == 2023.
+
+Two = signs performs the comparison, and one = performs the assignment to the variable.
+
+It’s good practice, though not strictly necessary, to use parentheses to make this clearer:
+
+is_2023 = (df['year'] == 2023)
+
+In the next exercise, we’ll use Boolean masks to filter DataFrames. For now, let’s practice working with comparison operators!

@@ -1,0 +1,66 @@
+SORTING AND FILTERING ROWS
+Sorting Rows
+16 min
+Exploring datasets is easier if the rows have a predictable structure. For example, the vehicles dataset would be simpler to inspect if we knew that the models were listed in chronological order.
+
+The syntax to sort a DataFrame df in pandas by a particular column is
+
+df = df.sort_values(
+  by = 'Column'
+)
+
+where
+
+.sort_values() is a DataFrame method
+by is a keyword that receives the label of the column to sort by
+By default, .sort_values() will sort from lowest to highest (or, for text, from A to Z). Passing False to the ascending parameter will sort from highest to lowest (or Z to A):
+
+df = df.sort_values(
+  by = 'Column',
+  ascending = False
+)
+
+Here’s an example of calling
+
+.sort_values(by='year',
+    ascending=False)
+
+on a small DataFrame of vehicle models:
+
+Original	Sorted
+Make	Year
+Ford	2022
+Toyota	2019
+Ford	2017
+Toyota	2020
+Make	Year
+Ford	2022
+Toyota	2020
+Toyota	2019
+Ford	2017
+Notice how the rows have been re-ordered to have the most recent model at the top, and the oldest at the bottom.
+
+Sorting an index
+Calling .sort_values() will only sort values by a column. To sort rows by the index values instead, use .sort_index(). There’s no need to specify a by parameter, since the method will already sort by the index.
+
+Like .sort_values(), passing True/False to ascending= controls the order of the index sort.
+
+How to Use Your Jupyter Notebook:
+
+You can run a cell in the Notebook to the right by placing your cursor in the cell and clicking the Run button or the Shift+Enter/Return keys.
+When you are ready to evaluate the code in your Notebook, press the Save button at the top of the Notebook or use the control/command+s keys before clicking the Test Work button at the bottom. Be sure to save your solution code in the cell marked ## YOUR SOLUTION HERE ## or it will not be evaluated.
+When you are ready to move on, click Next.
+Screenshot of the buttons at the top of a Jupyter Notebook. The Run and Save buttons are highlighted
+
+Instructions
+Checkpoint 1 Passed
+1.
+First, run the Setup cell to import libraries and datasets.
+
+Sort vehicles by year from lowest (oldest) to highest (newest).
+
+Checkpoint 2 Passed
+2.
+Sort vehicles by best_mpge from highest to lowest.
+
+Note: mpge stands for miles per gallon equivalent, and is a standard calculation used to compare different fuels (like electric) with standard vehicles. The field best_mpge is the highest mpge reported under all circumstances (e.g. highway driving versus city, hybrid performance, etc.)

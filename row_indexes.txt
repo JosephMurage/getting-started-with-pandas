@@ -1,0 +1,76 @@
+SORTING AND FILTERING ROWS
+Row Indexes
+13 min
+Both rows and columns in a DataFrame have labels called indexes. In the vehicles DataFrame
+
+rows are labelled by numbers (0, 1, 2, etc.)
+columns are labelled with text (id, model, year, etc.)
+If we talk about “the index” of a DataFrame, we’ll always be referring to the row index.
+
+Default Index
+By default, DataFrames come with a RangeIndex where the first row is labelled 0, the second row is labelled 1, and so on.
+
+To confirm this, we can call the .index attribute on a DataFrame:
+
+df.index
+
+If the DataFrame has the default index, the output will be
+
+RangeIndex(start=0,
+    stop=number of rows,
+    step=1)
+
+indicating that the row labels
+
+start at 0
+increase by 1 for each row
+end before reaching the total number of rows (since we started counting at 0)
+For example, a DataFrame with 3 rows might have the index RangeIndex(start=0, stop=3, step=1).
+
+In this RangeIndex, we start labelling rows at 0, stop before 3, and increase by 1 each row:
+
+the first row has the label 0
+the second row has the label 1
+the third row has the label 2
+Other Kinds of Index
+Both DataFrames and Series (individual columns) can have other types of index. For example, let’s call .value_counts() on vehicle_type in our vehicles DataFrame:
+
+vehicle_counts = vehicles['vehicle_type'].value_counts()
+vehicle_counts
+
+The output we’ll receive is
+
+sedan/wagon                  1205
+suv                           742
+pickup                        373
+van                           189
+passenger van/shuttle bus       7
+vocational/cab chassis          4
+
+Here, each row is labeled with the vehicle type as text. If we call
+
+vehicle_counts.index
+
+we’ll receive the output
+
+Index(['sedan/wagon', 'suv', 'pickup', 'van', 'passenger van/shuttle bus',
+       'vocational/cab chassis'],
+      dtype='object')
+
+Unlike a RangeIndex, this is an Index consisting of a list of distinct objects/strings.
+
+Resetting the Index
+It is possible to restore a standard RangeIndex by calling the method .reset_index(). For example, if we call
+
+vehicle_counts.reset_index()
+
+we’ll receive the following output
+
+index	vehicle_type
+0	sedan/wagon	1205
+1	suv	742
+2	pickup	373
+3	van	189
+4	passenger van/shuttle bus	7
+5	vocational/cab chassis	4
+Note that the column index in the .reset_index() DataFrame is no longer the index: it is a column containing the old index values pre-reset. The index after calling .reset_index() is the RangeIndex from 0 to 5.

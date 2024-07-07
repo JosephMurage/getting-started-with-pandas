@@ -1,0 +1,97 @@
+SORTING AND FILTERING ROWS
+Selecting Ranges of Rows
+19 min
+Instead of specifying lists of rows and columns with .loc/.iloc, we can specify a slice, which is like saying select all rows from row A to row B.
+
+Slices with .iloc
+If we want to select the first five rows of a DataFrame using iloc, we could use the list of row positions [0,1,2,3,4].
+
+A slice reproduces a consecutive list by specifying where to start and stop, using the syntax
+
+start_position:stop_position
+
+where
+
+start_position is the first position to include
+stop_position is one position beyond the last position to include
+For example, to reproduce our list [0,1,2,3,4], we would use the slice 0:5 to indicate:
+
+start at position 0
+stop before position 5
+include all positions in-between (1, 2, 3, 4)
+Let’s explore a practical example, using our vehicles DataFrame. The relevant section of the DataFrame is below:
+
+id	model	year	transmission
+1940	12988	amg e53 4matic+ (convertible)	2022	auto
+718	689	avalanche ffv	2007	auto
+1663	950	impala	2010	auto
+1581	250	yukon xl ffv	2004	auto
+Suppose we want to select the first three rows and the model, year, and transmission columns. We will need two slices, one for the rows and one for the columns:
+
+rows: we want to start at the first row (position 0) and end before the fourth row (position 3). The slice is 0:3 and will include positions 0, 1, and 2.
+columns: we want to start at the second column (position 1) and end before the fifth column (position 4). The slice is 1:4 and will include positions 1, 2, and 3
+The full syntax would be
+
+df.iloc[0:3,1:4]
+
+Slices with .loc
+Unlike .iloc, slices using .loc include the label after the : in the slice syntax. In other words,
+
+start_label:stop_label
+
+will include
+
+the row/column labeled start_label
+the row/column labeled stop_label
+all rows/columns in between
+Let’s use .loc to select the same section of vehicles: the first three rows and the columns from model to transmission.
+
+Again, we’ll need two slices:
+
+rows: the first three rows start at the label 1940 and end at the end 1663. The slice is 1940:1663 and will include rows labeled 1940, 718, and 1663. Note how the stop_label is included, unlike with .iloc.
+columns: the first column to include is labeled model and the last is transmission. The slice is 'model':'transmission' and will include columns labeled model, year, and transmission.
+The full syntax would be
+
+df.loc[1940:1663,'model':'transmission']
+
+Open-Ended Slices
+If we don’t specify a start value, the slice will start at the first position/label. For example, the .iloc slice :3 would include rows at positions 0, 1, and 2.
+
+Similarly, if we don’t specify an end value, the slice will end at the final position/label. For example, the .loc slice 'year': will include every column starting at year through to the final column of the DataFrame.
+
+If we specify neither the start nor the final value, the slice will include all rows and columns. For example, the code
+
+vehicles.iloc[0:2,:]
+
+will include rows at positions 0 and 1 along with every column.
+
+Instructions
+Checkpoint 1 Passed
+1.
+First, run the Setup cell to import libraries and datasets.
+
+Use .iloc to select the first four rows, and first five columns of vehicles. Assign the result to sliced.
+
+Code:
+1. Complete the code to select the first four rows and first five columns.
+sliced = vehicles.iloc[0:4,0:5]
+## YOUR SOLUTION HERE ##
+sliced = vehicles.iloc[0:4,0:5]
+​
+# show output
+sliced
+
+2. Complete the code to select the chevrolet rows in the setup cell output along with the vehicle_type, fuel, and fuel_configuration columns.
+## YOUR SOLUTION HERE ##
+chevy = vehicles.loc[2:3:, 'vehicle_type':'fuel_configuration']
+​
+# show output
+chevy
+
+3. Complete the code to select all rows up to and including the 20th row, and all columns from year through to the end.
+## YOUR SOLUTION HERE ##
+large_slice = vehicles.loc[:20,1:]
+​
+# show output
+large_slice
+

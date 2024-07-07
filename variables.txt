@@ -1,0 +1,93 @@
+EXPLORING DATA WITH PYTHON
+Variables
+14 min
+So far, we’ve used Python and pandas commands without worrying too much about how they work. In order to go further into analytics, we’ll need to examine some of the Python concepts behind these commands. Let’s start with the code we’ve been using to import datasets:
+
+dataset_name = pd.read_csv('filename.csv')
+
+There are three pieces to this code:
+
+to the right of the = sign is the pandas import code: pd.read_csv('filename.csv')
+to the left of the = sign is the name we’ve given to the dataset: dataset_name
+the = sign tells Python to connect the name dataset_name to the imported dataset
+This is an example of a more general concept in Python called variable assignment.
+
+Variables in Python
+A variable in Python is a name for referring to an object, just like dataset_name refers to the imported dataset. The object in question is called the value of the variable.
+
+To assign a value to a variable, we use the = sign as above:
+
+variable = value
+
+where
+
+variable is the name we’re giving an object, and is always on the left
+value is the object being named, and is always on the right
+For example, the code below assigns the imported repair dataset as the value of the variable repair.
+
+repair = pd.read_csv('repair.csv')
+
+The reason these names are called variables is because the value of the variable can change. Consider this example:
+
+repair = pd.read_csv('repair.csv')
+repair = pd.read_csv('laptops.csv')
+
+In the first line, we’ve imported the repair dataset and assigned it to the variable repair. In the second line, we’ve imported the laptop dataset and assigned it to the same repair variable.
+
+Python code is run from top to bottom. After both lines are run, the variable repair refers to the laptop dataset, and not to the repair dataset.
+
+Note that while Python code is run in order from top to bottom within an individual Jupyter cell, the cells of a Jupyter notebook can be run out of order. To the left of each cell is a number inside square brackets. This number indicates the sequence in which you have run the cells of your notebook. Running cells out of order can cause some problems with variable assignments, so be careful!
+
+Variable names
+Variable names in Python have a few restrictions:
+
+they must start with a letter or underscore
+they cannot contain spaces or special characters
+they are case sensitive (Repair and repair are different variables)
+Variable Types
+Like data, variables in Python can have different types.
+
+int: numbers without decimals
+float: numbers with decimals (including.0, both 4.0 and 4.1 are floats)
+str: text (which must always be placed between quotes)
+bool: True or False (first letter capitalized, no quotes)
+As an example, the following code assigns
+
+the int 3 to the variable three
+the float 3.14 to the variable pi
+the str Hello! to the variable text
+the bool True to the variable python_is_cool
+three = 3
+pi = 3.14
+text = "Hello!"
+python_is_cool = True
+
+Note that Hello! has quotes around it, while True does not. Strings need quotes around them. Booleans, which have only two possible values, do not require quotation marks.
+
+DataFrames
+Our datasets aren’t numbers or text, but tables containing numbers and text. These have a special variable type provided by pandas: pandas.core.frame.DataFrame or DataFrame for short. From now on, we’ll refer to arbitrary datasets in pandas as DataFrames.
+
+Checking a Variable Type
+Like data types, sometimes we want to check exactly what type Python thinks a variable is. The syntax for this is:
+
+type(variable_name)
+
+For example, to check the type of the variable three we assigned above, we’d type the following in a Jupyter Notebook cell:
+
+type(three)
+
+which would output int.
+
+In the checkpoints, we’ll usually ask you to assign all your code to a variable, so that we can automatically check your work. For example, in a checkpoint, we’d ask you to assign type(three) to a specific variable datatype:
+
+datatype = type(three)
+
+In these cases, we’ll include a line in the code cell to display the output for you:
+
+# show output
+datatype
+
+where
+
+the line # show output starts with a # to tell Python that this is a comment about the following code, and not code itself
+the variable name at the end of the cell tells Jupyter to display that variable as output. You will also sometimes see the variable name wrapped in a print statement: print(datatype). This is necessary when displaying more than one output at a time.

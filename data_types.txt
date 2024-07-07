@@ -1,0 +1,46 @@
+EXPLORING DATA WITH PYTHON
+Data Types
+10 min
+Different columns of a dataset can contain different kinds of data. In our repair dataset, for example, the column product_age contains numbers, while the column product_category contains text.
+
+These are called data types, and the type of each column tells us what kinds of analyses we can perform (for example, if we can calculate an average!)
+
+Viewing Data types
+When we import datasets, pandas assigns a data type to each column. These assignments aren’t always correct, and we’ll go over how to correct them later on. For now, let’s just look at what pandas assigns. The syntax to access these data types is
+
+dataset_name.dtypes
+
+In the Setup cell to the right, we’ve imported the repair dataset using the name repair and then displayed the data types using
+
+repair.dtypes
+
+Numeric Data
+The repair dataset has three numeric columns: year_of_manufacture, product_age, and year_repaired. The data types for these are listed in the Jupyter Notebook output as float64, float64, and int64:
+
+float64 refers to numbers that can have decimals, like 3.0 or 3.14159
+int64 refers to integers, numbers that cannot have decimals, like 3 or 4
+Note that year_of_manufacture, for example, seems to be incorrectly classified! We don’t expect years to have decimals, and yet pandas is listing its data type as float64. We’ll explain why this can happen (and how to fix it) later on.
+
+Text Data
+The repair dataset has four text columns: country, product_category, brand, and repair_status. All of these are listed as having the object data type in pandas. This is the name pandas gives to text-based data or to columns where pandas isn’t sure of the data type.
+
+Categorical Data
+Data can also be categorical or non-categorical. A column is categorical when each record can have only a few predefined values. For example, repair_status is a categorical column, since each row should only contain fixed, repairable, end of life, or unknown. The age column, on the other hand, is not categorical since there isn’t a small, fixed set of potential product ages.
+
+We often think of categorical data as text, but numeric columns can be categorical. For example, in our repair dataset, year_repaired has only a few predefined possible values. It might make sense in some cases to treat this column as categorical.
+
+Pandas does have a special data type for categorical data: category. However, this type must be applied manually to a column. You’ll learn how to do this later on.
+
+How to Use Your Jupyter Notebook:
+
+You can run a cell in the Notebook to the right by placing your cursor in the cell and clicking the Run button or the Shift+Enter/Return keys.
+When you are ready to evaluate the code in your Notebook, press the Save button at the top of the Notebook or use the control/command+s keys before clicking the Test Work button at the bottom. Be sure to save your solution code in the cell marked ## YOUR SOLUTION HERE ## or it will not be evaluated.
+When you are ready to move on, click Next.
+Screenshot of the buttons at the top of a Jupyter Notebook. The Run and Save buttons are highlighted
+
+Instructions
+Checkpoint 1 Passed
+1.
+From now on, we’ll sometimes put setup code (for example, importing datasets) in a Setup cell at the top of the Jupyter Notebook. You will need to run that cell before completing the exercises.
+
+We’ve imported a dataset of laptop repairs with the name laptops. Write code to display the data types for the laptops dataset.
