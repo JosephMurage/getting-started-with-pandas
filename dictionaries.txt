@@ -1,0 +1,50 @@
+EXPLORING DATA WITH PYTHON
+Dictionaries
+10 min
+Our product repair dataset contains information on 4139 laptops, 2265 mobiles (cell phones), and 704 desktop computers. If we wanted to record just this information, we could use a list:
+
+tech = [4139,2265,704]
+
+Unfortunately, this would require us to remember what order we added the numbers to the list! Instead of a list, this kind of data storage is better suited for a Python dictionary.
+
+Instead of individual values, like a list, dictionaries store what are called key-value pairs. In our example, one key-value pair is the key laptop connected to the value 4139. In a dictionary, these pairs are joined by the : symbol:
+
+'laptop':4139
+
+In this case, the key is a string while the value is a number. But the keys and values of a dictionary can have any data type.
+
+A complete dictionary in Python consists of any number of key-value pairs between curly braces {} separated by commas:
+
+dictionary = {
+  key1:value1,
+  key2:value2,
+  key3:value3 }
+
+Note that we could write this all on one line, but it is much easier to parse broken out like we’ve done here.
+
+Our complete tech dictionary would be
+
+tech = {
+  'laptops':4139,
+  'mobiles':2265,
+  'desktop computers':704}
+
+Accessing values
+To access the value associated with a key, we use the same bracket notation as we did for lists:
+
+dictionary[key]
+
+For example, the code
+
+tech['mobiles']
+
+would output 2265.
+
+Modifying Dictionaries
+If another laptop is repaired, we can update the laptop count by reassigning the laptop key:
+
+tech['laptops'] = 4140
+
+The same syntax will add a new key-value pair if the key used isn’t already in the dictionary. For example, to add video game consoles to our list of tech repairs, we could use the code
+
+tech['game consoles'] = 191

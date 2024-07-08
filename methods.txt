@@ -1,0 +1,48 @@
+EXPLORING DATA WITH PYTHON
+Methods
+11 min
+Each variable type in Python comes with built-in tools called methods. We’ve already encountered a couple methods in this lesson:
+
+.head() for displaying the first five lines of a DataFrame
+.append() for adding new elements to a list
+Using a method is typically called calling the method or applying the method.
+
+Keyword Parameters
+Some methods have keyword parameters we can adjust. For example, the .head() methods displays 5 rows of a DataFrame by default.
+
+We can modify the method to display a different number of rows using the built-in parameter n (for number of rows).
+
+The parameter’s name (in this case n) is called the keyword. To display 10 rows instead of 5, we’d write
+
+DataFrame.head(n=10)
+
+In English, we’d say that we have called the .head() method on our DataFrame, and that we passed the argument 10 to the parameter n.
+
+All methods with keyword parameters follow the same structure:
+
+variable.method(keyword=argument)
+
+Some methods have more than one parameter, in which case the parameters are separated by commas (and can be placed on separate lines for ease of reading):
+
+variable.method(
+  keyword1=argument1,
+  keyword2=argument2)
+
+If a method only has one parameter, it isn’t strictly necessary to state the parameter name. For example, the .head() method only has the parameter n, so sometimes we might write
+
+DataFrame.head(10)
+
+instead of
+
+DataFrame.head(n=10)
+
+However, while this makes the code shorter, it is always good to stay in the habit of specifying parameter keywords wherever possible to make our code easier to understand by others (or by ourselves in the future!)
+
+Attributes
+In addition to methods, variables in Python have data associated with them called attributes. For example, earlier in the lesson we encountered the DataFrame attribute .dtypes, which contains the data types of each column of a DataFrame.
+
+Methods perform some kind of task and return output. For example, .head() finds the top five rows of a DataFrame and outputs them.
+
+Attributes, on the other hand, store information (they are a kind of variable). For example, .dtypes contains the data types of a DataFrame’s columns.
+
+Because methods perform tasks, they come with parentheses () that let us input parameters to control how the task is done. Attributes, on the other hand, aren’t dynamic in this way, and so don’t take parameters (this is why they don’t have parentheses!)

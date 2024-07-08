@@ -1,0 +1,69 @@
+EXPLORING DATA WITH PYTHON
+Lists
+14 min
+Pandas DataFrames will be our main variable type for working with data, but we’ll also need to work with two Python variable types for data storage: lists and dictionaries. In the next few exercises, we’ll review the basics of both of these before returning to data analytics!
+
+Defining lists
+Lists in Python are defined using square brackets. For example, the following code assigns a list of numbers to the variable numbers:
+
+numbers = [4,4,5]
+
+Lists are always surrounded by square brackets [ ] and have commas , separating their entries.
+
+Note that while each value in the list numbers has the same data type, this isn’t a requirement. The following is also a valid list in Python:
+
+numbers_and_strings = [4,"four",5.0]
+
+Accessing lists
+Let’s assign a list of product categories from the repair dataset to the variable product_categories
+
+product_categories = ['laptops','desktop computers','tablets']
+
+This list has three entries: the strings laptops, desktop computers, and tablets.
+
+Outside of computer programming, we’d say that laptops is the first element of the list. In Python, like many computer programming languages, we start counting entries at 0. To avoid confusion, we’ll say that laptops is the entry at index 0. The entry at index 1 is desktop computers, and the entry at index 2 is tablets.
+
+We can access the entry of a list at a particular index using bracket notation:
+
+list_name[index]
+
+For example, if we wanted to refer to the index 1 entry of product_categories we’d write
+
+product_categories[1]
+
+which would output desktop computers.
+
+Modifying entries
+Suppose we wanted to change the entry desktop computers to be desktops. We can reassign entries in lists the same way we reassign variables:
+
+list_name[index] = new_value
+
+In our example, we’d write
+
+product_categories[1] = 'desktops'
+
+Adding entries
+Suppose we decide to add the entry mobile phones to the list of product_categories. There are two ways to do this. One way would be to manually assign an entry at the next index (3):
+
+product_categories[3] = 'mobile phones'
+
+The other way is to use a special command for lists called .append(). The syntax for .append() in general is
+
+list_name.append(new_entry)
+
+In our example, the list name is product_categories and the new entry is mobile phones, so we’ll use the syntax
+
+product_categories.append('mobile phones')
+
+You might notice some similarities between the structure of .append() and syntax we’ve already covered, like .read_csv(). Stay tuned for the next exercise!
+
+List length
+We often care about the number of entries in a list, so Python has a built-in function to compute this. The syntax in general is
+
+len(list_name)
+
+In our case, we would write
+
+len(product_categories)
+
+which would produce the value 4 (after we added mobile phones!)

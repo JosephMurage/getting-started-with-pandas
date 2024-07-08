@@ -1,0 +1,73 @@
+EXPLORING DATA WITH PYTHON
+Summarizing Categorical Data
+19 min
+Great work! The last few exercises have been a lot of Python programming. Now that we have that foundation, let’s return to working directly with our product repair dataset. We’ve loaded the dataset in the Jupyter notebook and displayed the first few rows.
+
+Let’s try to answer some of the questions we started out with:
+
+what kinds of products are brought to these community-run repair events?
+how often are these products actually fixed?
+are more or fewer products being brought to these events over time?
+Each of these questions refers to a specific column of the dataset. For example, to answer the first question, we’ll need to work with the product_category column.
+
+Accessing Columns
+Like dictionaries, we can access specific columns of a dataframe using square bracket notation:
+
+DataFrame['column_name']
+
+To extract just the product_category column from the repair DataFrame, we’d write
+
+repair['product_category']
+
+There is another notation you might encounter for accessing individual columns that uses periods:
+
+repair.product_category
+
+We’ll use the square bracket notation in this course, because it is more flexible: using the period notation, the column name cannot contain spaces (for example.)
+
+Note that an individual column of a DataFrame on its own has its own special variable type, called a pandas Series or just Series. Most of the time, this doesn’t matter. But if we specifically need a DataFrame, we can pass the column as a list instead (the second set of square brackets):
+
+repair[['product_category']]
+
+To extract more than one column at a time, we pass a list of column names to the square brackets:
+
+repair[['country','product_category']]
+
+Counting Values
+Let’s find out what kinds of products are brought to repair events. Pandas provides a built-in method value_counts() that not only lists all the unique values of a column, but also counts how often each value occurs.
+
+For our example, we’d write
+
+repair['product_category'].value_counts()
+
+Here are the first few lines of output:
+
+lamp                                 4250
+laptop                               4139
+vacuum                               4034
+
+By default, .value_counts() sorts from largest to smallest, so this output tells us that lamps are the most common product category in the dataset, with 4250 rows.
+
+The .value_counts() method has a few different parameters we can modify, including
+
+normalize=True, which will return percentages instead of raw numbers
+ascending=True, which will sort from smallest to largest, instead of largest to smallest
+For example, the code
+
+repair['product_category'].value_counts(
+    normalize=True)
+
+will output a series starting
+
+lamp                                 0.068445
+laptop                               0.066657
+vacuum                               0.064966
+
+This shows that while lamps are the largest category, they only make up around 6.8% of the dataset.
+
+Instructions
+Checkpoint 1 Passed
+1.
+First, run the Setup cell to import libraries and datasets.
+
+In the narrative above, we saw that lamps are the most common item in the dataset. Let’s find out the least common items! Call .value_counts() on the product_category column, using a parameter to sort the result from smallest to largest. Assign the result to the variable product_counts.
